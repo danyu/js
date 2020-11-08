@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    div {
+      border: solid thin gray;
+      height: 200px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <span>JSONP example</span>
+  <div></div>
+
+  <script>
+    function greeting(str) {
+      // let obj = JSON.parse(string);
+      document.querySelector('div').innerHTML = str;
+    }
+  </script>
+  <script src='http://localhost:3080/home?cb=greeting'></script>
+</body>
+
+</html>

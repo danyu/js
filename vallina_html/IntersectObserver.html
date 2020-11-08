@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head></head>
+
+<body>
+
+  <div id='root'>
+
+  </div>
+
+  <script>
+    let root = document.querySelector('#root');
+    for (let i = 0; i < 5; i++) {
+      let div = document.createElement('div');
+      div.innerHTML = 'item - ' + i;
+      root.appendChild(div);
+    }
+
+
+  </script>
+
+</body>

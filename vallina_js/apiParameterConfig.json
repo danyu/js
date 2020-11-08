@@ -1,0 +1,695 @@
+{
+  "searchCategories": [
+    {
+      "FrUsed": "Frequently used"
+    },
+    {
+      "Conn": "Connection"
+    },
+    {
+      "Env": "Envelope"
+    },
+    {
+      "Hdr": "Header"
+    },
+    {
+      "Bdy": "Body"
+    },
+    {
+      "Gen": "General"
+    }
+  ],
+  "searchParams": {
+    "hdr.MID": {
+      "description": "Message Identifier from email header",
+      "apiName": "hdr_mid",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "Hdr"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "QID": {
+      "description": "Queue Identifier of the message",
+      "apiName": "qid",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Conn"
+      ],
+      "min_length": 14,
+      "max_length": 14
+    },
+    "hdr.subject": {
+      "description": "Subject of the email message",
+      "apiName": "subject",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "like",
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Hdr"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "env.sender": {
+      "description": "Envelope Sender",
+      "apiName": "env_from",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Env"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "env.recipient": {
+      "description": "Envelope Recipient",
+      "apiName": "env_rcpt",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Env"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "hdr.from": {
+      "description": "Header From email address",
+      "apiName": "norm_hdr_from",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Hdr"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "hdr.to": {
+      "description": "Header To email address",
+      "apiName": "norm_hdr_to",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Hdr"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "senderhostname": {
+      "description": "Host name of the sender",
+      "apiName": "host",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "FrUsed",
+        "Conn"
+      ],
+      "min_length": 5,
+      "max_length": 255
+    },
+    "senderIP": {
+      "description": "IP Address of the sender",
+      "apiName": "ip",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "FrUsed",
+        "Conn"
+      ]
+    },
+    "attach.name": {
+      "description": "Attachment name",
+      "apiName": "attach",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "Bdy"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "attach.md5": {
+      "description": "MD5 hash of the attachment",
+      "apiName": "md5",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Bdy"
+      ],
+      "min_length": 32,
+      "max_length": 32
+    },
+    "attach.sha256": {
+      "description": "SHA256 hash of the attachment",
+      "apiName": "sha256",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Bdy"
+      ],
+      "min_length": 64,
+      "max_length": 64
+    },
+    "attach.virusname": {
+      "description": "Detected virus name",
+      "apiName": "virus",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": "",
+      "match": [
+        "matches"
+      ],
+      "category": [
+        "Bdy"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "SID": {
+      "description": "Session Identifier of the message",
+      "apiName": "sid",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Conn"
+      ],
+      "min_length": 10,
+      "max_length": 10
+    },
+    "rules": {
+      "description": "Triggered rules for a message",
+      "apiName": "rules",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": [
+        {
+          "Module ID": "access",
+          "Rule ID": [
+            "system",
+            "limit",
+            "blocked",
+            "trusted",
+            "verified",
+            "maxsize",
+            "attacherr",
+            "exestrip",
+            "pp_antispoof",
+            "offensive",
+            "spamsafe",
+            "spamblock",
+            "honeypoint",
+            "maxduration",
+            "subjectline_encrypt",
+            "desktop_plugin_encrypt",
+            "response_encrypt_external",
+            "pp_external_tag",
+            "dyoutest",
+            "nested3412",
+            "dyoutest_spam",
+            "testtest",
+            "dyoutest_set_spam_score",
+            "iprule",
+            "unrelatedthings"
+          ]
+        },
+        {
+          "Module ID": "av",
+          "Rule ID": [
+            "specialpolicy_clean",
+            "specialpolicy_protected",
+            "specialpolicy_error",
+            "specialpolicy_riskware",
+            "specialpolicy_notcleaned",
+            "clean",
+            "protected",
+            "error",
+            "riskware",
+            "notcleaned"
+          ]
+        },
+        {
+          "Module ID": "batv",
+          "Rule ID": [
+            "emptysender"
+          ]
+        },
+        {
+          "Module ID": "dkimv",
+          "Rule ID": [
+            "partner_temperror",
+            "partner_nopass",
+            "partner_spam_exempt"
+          ]
+        },
+        {
+          "Module ID": "dmarc",
+          "Rule ID": [
+            "norecord",
+            "norecordfailspf",
+            "pass",
+            "quarantine",
+            "reject",
+            "none",
+            "temperror",
+            "permerror"
+          ]
+        },
+        {
+          "Module ID": "journal",
+          "Rule ID": [
+            "journal",
+            "nonjournal",
+            "exclude"
+          ]
+        },
+        {
+          "Module ID": "pdr",
+          "Rule ID": [
+            "pass",
+            "reject",
+            "retry",
+            "delay",
+            "error"
+          ]
+        },
+        {
+          "Module ID": "regulation",
+          "Rule ID": [
+            "pci",
+            "ssnsubject",
+            "hipaa_definite",
+            "ssn_definite",
+            "glba_aba",
+            "glba_trading",
+            "hipaa_probable",
+            "ssn_probable",
+            "nhs",
+            "ssn_all",
+            "businesspartners",
+            "w2_impostor"
+          ]
+        },
+        {
+          "Module ID": "sandbox",
+          "Rule ID": [
+            "clean",
+            "threat",
+            "scanfailure",
+            "timeout",
+            "scanning",
+            "error"
+          ]
+        },
+        {
+          "Module ID": "spam",
+          "Rule ID": [
+            "nospamallowed_blocked",
+            "nospamallowed_malware",
+            "nospamallowed_impostor",
+            "nospamallowed_phish",
+            "nospamallowed_safe",
+            "nospamallowed_spam_definite",
+            "nospamallowed_adult",
+            "nospamallowed_spam",
+            "nospamallowed_lowpriority",
+            "nospamallowed_bulk",
+            "nospamallowed_suspect",
+            "nospamallowed_circleoftrust",
+            "nospamallowed_notspam",
+            "blocked",
+            "malware",
+            "impostor",
+            "phish",
+            "safe",
+            "spam_definite",
+            "adult",
+            "spam",
+            "lowpriority",
+            "bulk",
+            "suspect",
+            "circleoftrust",
+            "notspam"
+          ]
+        },
+        {
+          "Module ID": "spf",
+          "Rule ID": [
+            "pass",
+            "fail",
+            "softfail",
+            "neutral",
+            "none",
+            "temperror",
+            "permerror"
+          ]
+        },
+        {
+          "Module ID": "urldefense",
+          "Rule ID": [
+            "rewrite"
+          ]
+        },
+        {
+          "Module ID": "zerohour",
+          "Rule ID": [
+            "virus",
+            "probable",
+            "threat",
+            "error"
+          ]
+        }
+      ],
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Gen"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "modules": {
+      "description": "Filtering modules that scanned the message",
+      "apiName": "modules",
+      "type": "multi-string, comma-delimited",
+      "delimiter": ",",
+      "multipleVal": true,
+      "preDefValues": [
+        "access",
+        "asset",
+        "audit",
+        "av",
+        "batv",
+        "bulk_continue",
+        "bulk_discard",
+        "circle_of_trust",
+        "dkim",
+        "dkimv",
+        "dmarc",
+        "encrypt",
+        "journal",
+        "pdr",
+        "regulation",
+        "sandbox",
+        "smtpsrv",
+        "spam",
+        "spf",
+        "urldefense",
+        "zerohour"
+      ],
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Gen"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "GUID": {
+      "description": "Message global unique identifier",
+      "apiName": "guid",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Gen"
+      ],
+      "min_length": 32,
+      "max_length": 32
+    },
+    "suborgs": {
+      "description": "Suborg the recipient belongs to",
+      "apiName": "suborgs",
+      "type": "string",
+      "delimiter": "",
+      "multipleVal": false,
+      "preDefValues": "",
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Conn"
+      ]
+    },
+    "finalaction": {
+      "description": "Final action taken on the message",
+      "apiName": "action",
+      "type": "string",
+      "multipleVal": false,
+      "preDefValues": [
+        "accept",
+        "continue",
+        "discard",
+        "redirect",
+        "reject",
+        "retry",
+        "incomplete"
+      ],
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Gen"
+      ],
+      "min_length": 1,
+      "max_length": 1000
+    },
+    "direction": {
+      "description": "The route direction of the message",
+      "apiName": "route_direction",
+      "type": "string",
+      "multipleVal": false,
+      "preDefValues": [
+        "inbound",
+        "outbound",
+        "internal",
+        "external"
+      ],
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Conn"
+      ]
+    },
+    "modules.spam.triggeredclassifier": {
+      "description": "The one spam classifier as defined by policy rules that determined the spam disposition",
+      "apiName": "triggered_classifier",
+      "type": "string",
+      "multipleVal": false,
+      "preDefValues": [
+        "malware",
+        "impostor",
+        "phish",
+        "adult",
+        "bulk",
+        "lowpriority",
+        "cot",
+        "suspect",
+        "spam"
+      ],
+      "match": [
+        "is"
+      ],
+      "category": [
+        "Gen"
+      ]
+    }
+  },
+  "columns": [
+    {
+      "id": "timestamp",
+      "default": true,
+      "type": "string",
+      "filter": "custom"
+    },
+    {
+      "id": "sender",
+      "default": true,
+      "type": "string",
+      "filter": "custom"
+    },
+    {
+      "id": "recipients",
+      "default": true,
+      "type": "array",
+      "filter": "custom"
+    },
+    {
+      "id": "subject",
+      "default": true,
+      "type": "string",
+      "filter": "custom"
+    },
+    {
+      "id": "finalAction",
+      "default": true,
+      "type": "string",
+      "filter": "custom"
+    },
+    {
+      "id": "finalRule",
+      "default": true,
+      "type": "string",
+      "filter": "custom"
+    },
+    {
+      "id": "attachmentNames",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "attachmentVirusNames",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "direction",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "guid",
+      "default": false,
+      "type": "string",
+      "filter": "plain"
+    },
+    {
+      "id": "hdrSender",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "hdrRecipients",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "hdrMsgId",
+      "default": false,
+      "type": "array",
+      "filter": "plain"
+    },
+    {
+      "id": "modulesRules",
+      "default": false,
+      "type": "object",
+      "filter": "enum"
+    },
+    {
+      "id": "qid",
+      "default": false,
+      "type": "string",
+      "filter": "plain"
+    },
+    {
+      "id": "senderHostname",
+      "default": false,
+      "type": "string",
+      "filter": "plain"
+    },
+    {
+      "id": "ip",
+      "default": false,
+      "type": "string",
+      "filter": "plain"
+    },
+    {
+      "id": "sid",
+      "default": false,
+      "type": "string",
+      "filter": "plain"
+    },
+    {
+      "id": "suborg",
+      "default": false,
+      "type": "object",
+      "filter": "enum"
+    }
+  ]
+}

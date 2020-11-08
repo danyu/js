@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Redux basic example</title>
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <p>
+      Clicked: <span id="value">0</span> times
+    </p>
+    <p>
+      Pace:
+      <span id='pace'> 1</span>
+      <button id='increPace'>+</button>
+      <button id='decrePace'>-</button>
+    </p>
+    <div>
+      <button id="increment">+</button>
+      <button id="decrement">-</button>
+      <button id="incrementIfOdd">Increment if odd</button>
+      <button id="incrementAsync">Increment async</button>
+    </div>
+
+  </div>
+  <script>
+    let initState = { value: 0, pace: 1 };
+    function counter(state = initState, action) {
+      if (typeof state === 'undefined') {
+        return state;
+      }
+      const { pace, value } = state;
+      switch (action.type) {
+        case 'INCREMENT':
+          return { ...state, value: value + pace }
+        case 'DECREMENT':
+          return { ...state, value: value - pace }
+        case 'INCRE_PACE':
+          return { ...state, pace: pace + 1 }
+        case 'DECRE_PACE':
+          return { ...state, pace: pace - 1 }
+        default:
+          return state
+      }
+    }
+
+    // set up store
+    var store = Redux.createStore(counter)
+    var valueEl = document.querySelector('#value')
+    var paceEl = document.querySelector('#pace')
+
+    function render() {
+      const { value, pace } = store.getState();
+      valueEl.innerHTML = value
+      paceEl.innerHTML = pace
+    }
+
+    render()
+    // set up render observer
+    store.subscribe(render)
+
+    document.getElementById('increment')
+      .addEventListener('click', function () {
+        store.dispatch({ type: 'INCREMENT' })
+      })
+
+    document.getElementById('decrement')
+      .addEventListener('click', function () {
+        store.dispatch({ type: 'DECREMENT' })
+      })
+
+    document.getElementById('incrementIfOdd')
+      .addEventListener('click', function () {
+        if (store.getState().value % 2 !== 0) {
+          store.dispatch({ type: 'INCREMENT' })
+        }
+      })
+
+    document.getElementById('incrementAsync')
+      .addEventListener('click', function () {
+        setTimeout(function () {
+          store.dispatch({ type: 'INCREMENT' })
+        }, 1000)
+      })
+
+    document.getElementById('increPace')
+      .addEventListener('click', function () {
+        store.dispatch({ type: 'INCRE_PACE' })
+      })
+
+    document.getElementById('decrePace')
+      .addEventListener('click', function () {
+        store.dispatch({ type: 'DECRE_PACE' })
+      })
+  </script>
+</body>
+
+</html>

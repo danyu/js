@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      display: flex;
+    }
+
+    .rating {
+      padding: 10px;
+      /* display: block; */
+      text-align: center;
+      background-color: lightcyan;
+      width: auto;
+      margin: auto;
+      /* flex-direction: row; */
+    }
+
+    .title,
+    .curRating {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      height: 50px;
+      width: 50px;
+      border: solid thin black;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .solid {
+      background-color: gold;
+    }
+
+    /* .empty {
+      background-color: gold;
+    } */
+  </style>
+  <script>
+    let curRating = 3;
+    // let curRating = initRating;
+    let stars = [];
+
+    function createRating() {
+      let container = document.querySelector('.starsContainer');
+      for (let i = 1; i <= 5; i++) {
+        // create star
+        let star = document.createElement('div');
+        star.className = 'star';
+        star.attributes.index = i;
+        // attach event handlers
+        star.addEventListener('click', setRating);
+        star.addEventListener('mouseenter', onMouseEnter);
+        star.addEventListener('mouseleave', onMouseLeave);
+        container.appendChild(star);
+      }
+
+      renderTitle(curRating);
+      renderStars(curRating);
+
+    }
+
+    function setRating(e) {
+      // set score
+      curRating = e.target.attributes.index;
+      renderStars(curRating);
+      renderTitle(curRating);
+    }
+
+    function onMouseEnter(e) {
+      // e.target.className = 'star solid';
+      const hovered = e.target.attributes.index;
+      const ratingToHighlight = hovered || curRating;
+      renderStars(ratingToHighlight);
+    }
+
+    function onMouseLeave() {
+      renderStars(curRating);
+    }
+
+    function renderStars(rating) {
+      document.querySelectorAll('.star').forEach(curE => {
+        curE.className = curE.attributes.index <= rating ? 'star solid' : 'star';
+      })
+    }
+
+    function renderTitle(rating) {
+      document.querySelector('.curRating').innerHTML = rating;
+    }
+
+  </script>
+</head>
+
+<body onload="createRating()">
+  <div class="rating">
+    <div class="title">Review</div>
+    <div class="curRating"></div>
+    <div class="starsContainer"></div>
+  </div>
+</body>
+
+</html>

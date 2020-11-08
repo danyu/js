@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+
+    function loadProgressBar() {
+      let step = 5;
+      let progress = 0;
+      let pb = document.querySelector('.pb')
+      if (pb) {
+        // pb.style
+        let interval = setInterval(function () {
+          progress += step;
+          if (progress > 100) {
+            clearInterval(interval);
+          } else {
+            pb.style.width = progress + '%';
+          }
+        }, 100);
+      }
+    }
+
+  </script>
+  <style>
+    .pb-container {
+      border: solid thin #555;
+      height: 30px;
+    }
+
+    .pb {
+      height: 100%;
+      background-color: coral;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class='pb-container'>
+    <div class='pb'></div>
+  </div>
+  <input type="button" onclick="loadProgressBar()" value='load' />
+</body>
+
+</html>

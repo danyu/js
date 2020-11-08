@@ -1,0 +1,29 @@
+#chessBoard {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  box-sizing: content-box;
+  border: solid thin black;
+}
+
+/* div.cell:nth-child(odd) {
+  background-color: white;
+}
+
+div.cell:nth-child(even) {
+  background-color: black;
+} */
+
+div.cell {
+  width: 50px;
+  height: 50px;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
