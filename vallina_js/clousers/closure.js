@@ -1,4 +1,4 @@
-
+const log = console.log;
 const add = (function () {
   // live in closure
   let sum = 0;
@@ -13,9 +13,12 @@ const add = (function () {
   });
 })();
 
-console.log(add(1));
-console.log(add(4));
+log(add(1));
+log(add(4));
+log(add(8));
 
+
+log('------------');
 const callCount = (function () {
   let cnt = 0;
   function increase() {
@@ -27,29 +30,34 @@ const callCount = (function () {
   return increase;
 })();
 
-console.log(callCount());
-console.log(callCount());
+log(callCount());
+log(callCount());
 callCount.reset();
-console.log(callCount());
+log(callCount());
 
-const SS = (function () {
-  const calculation = function (initVal = 0) {
-    this.val = initVal;
-    this.add = function (num = 0) {
-      this.val += num
-      return this;
-    }
-    this.print = () => {
-      console.log(this.val);
-      return this;
-    }
+log('Math');
+let curVal = 1000;
+const Math = function (initVal = 0) {
+  let curVal = initVal;
+  this.add = (val) => {
+    curVal += val;
     return this;
-  };
-
-  const init = function (initVal = 0) {
-    return calculation(initVal);
   }
-  return init;
-})();
+  this.sub = function (val) {
+    curVal -= val;
+    log('after sub', curVal);
+    return this;
+  }
+  this.printVal = function () {
+    log('curVal', curVal);
+  }
+}
 
-SS(9).add(1).add(1).print().add(4).print();
+let task1 = new Math(10);
+let task2 = new Math(100);
+task1.add(1).add(1).sub(20).printVal();
+task1.add.call(task2, 10).printVal();
+task2.printVal();
+task1.sub.call(task2, 10).printVal();
+task1.printVal();
+log(curVal);

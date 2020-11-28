@@ -85,7 +85,7 @@
 
     function onMouseEnter(e) {
       // e.target.className = 'star solid';
-      console.log('in onMouseEnter', this);
+      console.log('in onMouseEnter, this = ', this);
       const hovered = e.target.getAttribute('idx');
       const ratingToHighlight = hovered || curRating;
       renderStars(ratingToHighlight);

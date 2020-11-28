@@ -1,4 +1,6 @@
 
+const log = console.log;
+
 log('-----generator');
 function* nextNum(value) {
   let num1 = yield value++;
