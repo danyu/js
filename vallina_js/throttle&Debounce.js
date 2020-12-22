@@ -2,13 +2,14 @@ function debounce(func, delay) {
   // console.log('create debounce');
   var timeout;
 
+  // func to run
   return function (...args) {
     var _this = this;
     console.log('this =>', this);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       console.log('this inside setTimeout => ', this);
-      func.apply(_this, args);
+      func(...args);
       // func(args);
       timeout = null;
     }, delay);
@@ -19,6 +20,8 @@ function throttle(func, limit) {
   // console.log('create throttle');
   var timeout;
   // var isThrottling;
+
+  // func to run
   return function (...args) {
 
     if (!timeout) {
@@ -27,7 +30,7 @@ function throttle(func, limit) {
       timeout = setTimeout(() => {
         clearTimeout(timeout);
         timeout = null;
-        isThrottling = false;
+        // isThrottling = false;
       }, limit)
     }
   }

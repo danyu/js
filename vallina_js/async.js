@@ -1,6 +1,6 @@
 function printTimeout() {
   for (var i = 0; i < 5; i++) {
-    window.setTimeout(function () { console.log(i); }, i * 100);
+    setTimeout(function () { console.log(i); }, i * 100);
   }
 }
 

@@ -1,0 +1,12 @@
+parking lot
+(1) Scenarioes/ use cases
+   driver drives to lot with open lots.
+   driver gets a ticket from ticketing machine at entrance.
+   driver parks car.
+
+   driver drives to exit.
+   driver inserts ticket. system calculates fee.
+   driver inserts cash or card to payment machine.
+   machine prints receipt.
+restraunt
+(1)

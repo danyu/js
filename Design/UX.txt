@@ -1,0 +1,10 @@
+How to work with UX?
+(*) UI interactions articulate?
+(*) Implementable?
+(*) Dependencies supporting functions are ready?
+(*) Specs (positions, styling) clear.
+(*) Look and feel Style consistence
+(*) is component supose to be reusable?
+
+
+

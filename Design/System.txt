@@ -1,0 +1,12 @@
+System design steps:
+(1) Use cases
+(2) Entities
+(3) Functions/modules
+(4) UI components
+    a. pages
+    b. organization
+(5) Backend APIs
+    a. methods
+    b. format
+
+

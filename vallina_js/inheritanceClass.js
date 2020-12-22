@@ -19,7 +19,6 @@ class Animal {
   }
 }
 
-
 class Cat extends Animal {
 
   constructor(name) {
@@ -38,7 +37,9 @@ class Tiger extends Cat {
 }
 
 let tom = new Animal('Tom');
+let whiteCat = new Cat();
 let tiger = new Tiger('Siberian')
+whiteCat.move();
 tom.move().about();
 tiger.about();
 console.log(tom.canJump);

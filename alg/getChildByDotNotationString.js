@@ -6,7 +6,7 @@ console.log(get(object, 'a[0].b.c'));
 console.log(get1(object, 'a[0].b.c'));
 
 function get(obj, expr) {
-  expr = expr.replace(/\[/g, '.').replace(/\]/g, '', '.');
+  expr = expr.replace(/\[/g, '.').replace(/\]/g, '');
   // console.log(expr);
   return expr.split('.').reduce((o, cur) => {
     return cur ? o[cur] : o;
