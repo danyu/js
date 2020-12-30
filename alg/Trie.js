@@ -1,12 +1,13 @@
-function Node() {
-  this.isEnd = false;
-  this.letters = new Map();
-}
+
 
 function Trie() {
 
-  // console.log(this);
+  function Node() {
+    this.isEnd = false;
+    this.letters = new Map();
+  }
 
+  // console.log(this);
   this.root = new Node();
   this.insert = function (word) {
 
@@ -42,13 +43,15 @@ function Trie() {
         return false;
       }
     }
-    return true;
+    // return true;
+    return !node.isEnd;
   }
 }
 
 let trie = new Trie();
 trie.insert('app');
 console.log(trie.search('app'));
+console.log(trie.startsWith('app'));
 console.log(trie.startsWith('ap'));
 console.log(trie.startsWith('ac'));
 // console.log(this);
