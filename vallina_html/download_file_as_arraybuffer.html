@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <a href="#"> download </a>
+    <script>
+      document.querySelector("a").onclick = download;
+      function concatTypedArrays(a, b) {
+        // a, b TypedArray of same type
+        var c = new a.constructor(a.length + b.length);
+        c.set(a, 0);
+        c.set(b, a.length);
+        return c;
+      }
+
+      function download() {
+        var ary1 = new TextEncoder().encode("FName,LName\n");
+        var ary2 = new TextEncoder().encode("John,Doe\n");
+        // console.log(a);
+        var ary3 = concatTypedArrays(ary1, ary2);
+        var string = new TextDecoder().decode(ary3);
+        console.log(string);
+        saveByteArray("testdownload.csv", ary3);
+
+        function saveByteArray(reportName, byte) {
+          var blob = new Blob([byte], { type: "application/csv" });
+          var link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          var fileName = reportName;
+          link.download = fileName;
+          link.click();
+        }
+      }
+    </script>
+  </body>
+</html>
