@@ -1,0 +1,35 @@
+1. General requirement
+
+2. Functional requirement
+
+3. Components architecture
+   - hight-level mock up
+   - dependency graph
+
+4. Props Design
+
+5. API Design
+
+6. State Design
+
+7. Optimization
+   - Network
+     minify css/js, gzip compression/ brotli, CDN (Content Delivery Network), ES5/ES6, core, theming, utility, browser
+     css sprite to combine images.
+   - Rendering
+     async download JS,
+     Dom, render the HTML elements once and update content later, skeleton/tomstone/placeholders
+     CSS, css naming stratgy to improve selector efficiency, css animation
+   - JS
+     Event delegation
+
+8. Accessibility
+   - rem over pixel
+   - HTML5 semantics
+     SEO (serch engine optimized) 
+     screen reader friendly: (title tag, navigation friendly, layout, image alt attribute, ARIA labels)
+   - AIRA (Accessible Rich Internet Applications)
+
+
+9. Extensibility
+

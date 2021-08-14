@@ -1,100 +1,94 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <style>
-    .nav {
-      display: flex;
-    }
-
-    .nav-item,
-    .sub-nav-item {
-      padding: 8px;
-      border: solid thin #ddd;
-      background-color: lightblue;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .sub-nav-container {
-      position: absolute;
-      top: 35px;
-      left: -3px;
-      display: flex;
-      flex-flow: column;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .subnav {
-      display: none;
-    }
-  </style>
-
-  <script>
-    const navConfig = [
-      {
-        name: 'Home'
-      },
-      {
-        name: 'Pages',
-        subnav: [{ name: 'News' }, { name: 'History' }],
-      },
-      {
-        name: 'About'
+  <head>
+    <style>
+      .nav {
+        display: flex;
       }
 
-    ];
-    function setNav() {
-      let nav = document.querySelector('.nav');
-      navConfig.forEach(({ name, subnav }) => {
-        // nav item
-        let item = document.createElement('div');
-        item.classList.add('nav-item');
+      .nav-item,
+      .sub-nav-item {
+        padding: 8px;
+        border: solid thin #ddd;
+        background-color: lightblue;
+      }
 
-        // nav title
-        let itemTitle = document.createElement('div');
-        itemTitle.innerHTML = name;
-        // itemTitle.classList.add('navitemtitle');
+      .nav-item {
+        position: relative;
+      }
 
-        item.appendChild(itemTitle);
+      .sub-nav-container {
+        position: absolute;
+        top: 35px;
+        left: -3px;
+        display: flex;
+        flex-flow: column;
+      }
 
-        let subNavContainer = document.createElement('div');
-        subNavContainer.classList.add('sub-nav-container', 'hidden');
+      .hidden {
+        display: none;
+      }
 
-        (subnav || []).forEach(({ name }) => {
-          let subNavItem = document.createElement('div');
-          subNavItem.innerHTML = name;
-          subNavItem.classList.add('sub-nav-item');
-          subNavContainer.appendChild(subNavItem);
+      .subnav {
+        display: none;
+      }
+    </style>
+
+    <script>
+      const navConfig = [
+        {
+          name: "Home",
+        },
+        {
+          name: "Pages",
+          subnav: [{ name: "News" }, { name: "History" }],
+        },
+        {
+          name: "About",
+        },
+      ];
+      function setNav() {
+        let nav = document.querySelector(".nav");
+        navConfig.forEach(({ name, subnav }) => {
+          // nav item
+          let item = document.createElement("div");
+          item.classList.add("nav-item");
+
+          // nav title
+          let itemTitle = document.createElement("div");
+          itemTitle.innerHTML = name;
+          // itemTitle.classList.add('navitemtitle');
+
+          item.appendChild(itemTitle);
+
+          let subNavContainer = document.createElement("div");
+          subNavContainer.classList.add("sub-nav-container", "hidden");
+
+          (subnav || []).forEach(({ name }) => {
+            let subNavItem = document.createElement("div");
+            subNavItem.innerHTML = name;
+            subNavItem.classList.add("sub-nav-item");
+            subNavContainer.appendChild(subNavItem);
+          });
+
+          item.appendChild(subNavContainer);
+          nav.appendChild(item);
+
+          item.addEventListener("mouseenter", () => {
+            item.querySelector(".sub-nav-container").classList.remove("hidden");
+          });
+
+          item.addEventListener("mouseleave", () => {
+            item.querySelector(".sub-nav-container").classList.add("hidden");
+          });
         });
+      }
+    </script>
+  </head>
 
-        item.appendChild(subNavContainer);
-        nav.appendChild(item);
+  <body onload="setNav()">
+    <div class="nav"></div>
 
-        item.addEventListener('mouseenter', () => {
-          item.querySelector('.sub-nav-container').classList.remove('hidden');
-        });
-
-        item.addEventListener('mouseleave', () => {
-          item.querySelector('.sub-nav-container').classList.add('hidden');
-        });
-
-      });
-    }
-  </script>
-</head>
-
-<body onload="setNav()">
-  <div class='nav'>
-
-  </div>
-
-  Hello, there!
-</body>
-
+    Hello, there!
+  </body>
 </html>

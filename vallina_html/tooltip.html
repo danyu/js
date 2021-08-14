@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <style>
+      h1{
+        color: red;
+      }
+      
+      body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      .tooltip{
+        position: relative;
+        left: 100px;
+        width: 200px;
+        background-color: #ddd;
+        text-align: center;
+      }
+      
+      .tooltip-text{
+        visibility: hidden;
+        position: absolute;
+        top: -250%;
+        left: 50%;
+/*         background-color: black; */
+        border: solid 2px black;
+        padding: 5px;
+      }
+      
+      .tooltip:hover .tooltip-text{
+        visibility: visible;
+      }
+      
+      .tooltip-text::after{
+        content: '';   
+        position: absolute;
+        left: 50%;
+        top: 100%; 
+        border: solid 6px black;
+        border-color: black transparent transparent transparent;
+      }
+        
+      
+    </style>
+  </head>
+  <body>
+<!--     <h1>Hello, World</h1> -->
+    <div class='tooltip'>
+      Show Name
+      <div class ='tooltip-text'>
+        Danyu
+      </div>  
+    </div>
+    <script>
+      document.querySelector('.tooltip')
+        .addEventListener('mousemove',(e)=>{
+        console.log(e.target.clientX, e.target.clientY);
+        const tooltipText = document.querySelector('.tooltip-text');
+        tooltipText.innerHTML=e.offsetX+', '+e.offsetY;
+        tooltipText.style.left = e.offsetX+'px';
+      });
+      
+//       function showTooltip(e){
+//         console.log(e.taget.clinetX, e.target.clientY);
+        
+//       }
+      
+    </script>
+  </body>
+</html>

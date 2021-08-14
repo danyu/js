@@ -1,0 +1,42 @@
+InfinitScroller
+
+1. General requirements
+    a. configurable
+       - height
+       - width
+       - 
+    b. renders
+       
+
+2. Functional requirements
+   a. render list
+   b. can scrollable vertical or horizontal
+   c. 
+
+3. Components architecture
+   - hight-level mock up
+   - dependency graph
+
+4. Props Design
+    type ListItem={
+        data,
+        render
+    };
+
+    type Scroller={
+        list: ListItem[],
+        height,
+        width,
+        onScroll,
+        rowRender?,
+   }
+
+5. API Design
+
+6. State Design
+
+7. Optimization
+
+8. Accessibility
+
+9. Ectensibility
