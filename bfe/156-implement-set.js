@@ -15,7 +15,7 @@ function set(obj, path, value) {
     } else {
       if (!obj.hasOwnProperty(prop)) {
         const nextProp = props[i + 1];
-        child[prop] = String(Number(nextProp)) === next ? [] : {};
+        child[prop] = String(Number(nextProp)) === nextProp ? [] : {};
       }
       child = child[prop];
     }

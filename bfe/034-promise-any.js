@@ -8,18 +8,21 @@
 function any(promises) {
   // your code here
   return new Promise((res, rej) => {
-    const errors = [];
-    for (let i = 0; i < promises.length; i++) {
-      const p = promises[i];
-      p.then(res).catch((e) => {
-        errors[i] = e;
-        if (errors.length === promises.length) {
-          rej(
-            new AggregateError("No Promise in Promise.any was resolved", errors)
-          );
-        }
-      });
-    }
+    let errors = [];
+    promises.forEach((p, i) => {
+      Promise.resolve(p)
+        .then((v) => res(v))
+        .catch((e) => {
+          errors[i] = e;
+          if (errors.length === promises.length)
+            rej(
+              new AggregateError(
+                "No Promise in Promise.any was resolved",
+                errors
+              )
+            );
+        });
+    });
   });
 }
 
@@ -28,4 +31,7 @@ const promises = [
   Promise.resolve("2"),
   Promise.resolve(3),
 ];
-console.log(any(promises));
+
+any(promises)
+  .then((v) => console.log(v))
+  .catch((e) => console.log(e));

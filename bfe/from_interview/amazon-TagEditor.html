@@ -1,0 +1,50 @@
+<style></style>
+<div class="container">
+  <input id="key" type="text" />
+  <label for="key"> Tag key: </label>
+  <input id="value" type="text" />
+  <label for="value"> Tag value: </label>
+  <input id="btn" type="button" value="add tag" />
+  <ul class="list"></ul>
+</div>
+
+<script>
+  //   var tags = {};
+  var MAX_TAGS = 5;
+  var cnt = 0;
+  var $ = (s) => document.querySelector(s);
+  init();
+
+  function init() {
+    $("#btn").addEventListener("click", addTag);
+  }
+
+  function updateList(key, value) {
+    const text = key + ", " + value;
+
+    // check if it is there
+    let li = $("li[key='" + key + "']");
+    if (li) {
+      li.innerText = text;
+      return;
+    }
+
+    let ul = $("ul");
+    li = document.createElement("li");
+    li.setAttribute("key", key);
+    li.innerText = text;
+    ul.appendChild(li);
+    cnt++;
+  }
+
+  function addTag() {
+    const key = $("#key").value;
+    const value = $("#value").value;
+
+    if (!key || !value || cnt === MAX_TAGS) {
+      return;
+    }
+
+    updateList(key, value);
+  }
+</script>

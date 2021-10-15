@@ -1,0 +1,30 @@
+<ul>
+  <li>Apple <input type="button" value="delete" /></li>
+  <li>Orange <input type="button" value="delete" /></li>
+  <li>Pear <input type="button" value="delete" /></li>
+</ul>
+<style>
+  li {
+    display: block;
+    width: 400px;
+    position: relative;
+    height: 30px;
+  }
+
+  [type="button"] {
+    position: absolute;
+    right: 0px;
+    color: red;
+  }
+</style>
+<script>
+  document.querySelector("input").addEventListener("click", (e) => {
+    console.log("fake delete");
+    e.stopImmediatePropagation();
+  });
+  document.querySelectorAll("input").forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      e.target.parentElement.remove();
+    })
+  );
+</script>

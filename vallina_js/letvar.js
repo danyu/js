@@ -1,6 +1,8 @@
 var a = 0;
+const log = console.log;
 
 function addNum(num, global) {
+  var num = 99;
   log(arguments);
   var b = 0;
   let c = 0;
@@ -9,9 +11,9 @@ function addNum(num, global) {
     c = 1;
     var b;
     b = 1;
-  };
+  }
   // log()(c);
-  log('a=' + a, 'b=' + b, 'c=' + c);
+  log("a=" + a, "b=" + b, "c=" + c);
   (() => {
     let c = 2;
     c = 10;
@@ -20,13 +22,13 @@ function addNum(num, global) {
     b = 2;
     var a = 2;
   })();
-  log('a=' + a, 'b=' + b, 'c=' + c);
+  log("a=" + a, "b=" + b, "c=" + c);
   (() => {
     let c = 3;
     var b = 3;
     global.a = 3;
   })();
-  log('a=' + a, 'b=' + b, 'c=' + c);
+  log("a=" + a, "b=" + b, "c=" + c);
 }
 
 function add() {
@@ -35,5 +37,6 @@ function add() {
 
 var _a = 10;
 // log(_a);
-addNum(9, window);
+addNum(9, this);
 // add();
+console.log(this, this.a);

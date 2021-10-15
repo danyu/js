@@ -1,6 +1,8 @@
 /**
  * @param {Array<Promise>} promises
  * @return {Promise}
+ *
+ * Ends as soon as any promise settled.
  */
 function race(promises) {
   // your code here

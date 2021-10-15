@@ -17,8 +17,9 @@
      minify css/js, gzip compression/ brotli, CDN (Content Delivery Network), ES5/ES6, core, theming, utility, browser
      css sprite to combine images.
    - Rendering
+     
      async download JS,
-     Dom, render the HTML elements once and update content later, skeleton/tomstone/placeholders
+     Dom, render the HTML elements once and update content later, skeleton/tomstone/placeholders(instantaneous)
      CSS, css naming stratgy to improve selector efficiency, css animation
    - JS
      Event delegation

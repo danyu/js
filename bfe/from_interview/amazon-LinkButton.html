@@ -1,0 +1,56 @@
+<style>
+  img {
+    height: 24px;
+    width: 24px;
+  }
+
+  input:hover {
+    background-color: lightblue;
+  }
+
+  .loading {
+    background-color: brown;
+  }
+</style>
+
+<div>
+  <input
+    type="button"
+    src="https://www.w3schools.com/tags/img_submit.gif"
+    value="Info"
+  />
+  <img />
+</div>
+
+<script>
+  const loadingIcon =
+    "https://www.iforium.com/wp-content/uploads/blue-wheel-loading.gif";
+  const defaultIcon = "https://www.w3schools.com/tags/img_submit.gif";
+
+  var isLoading = false;
+  var img = document.querySelector("img");
+  var btn = document.querySelector("input");
+
+  init();
+  function init() {
+    btn.addEventListener("click", loadData);
+    setIcon();
+  }
+
+  function setIcon(isLoading) {
+    img.src = isLoading ? loadingIcon : defaultIcon;
+  }
+
+  function loadData() {
+    isLoading = true;
+    // btn.classList.add("loading");
+    setIcon(true);
+    // Promise((res) => {
+    setTimeout(() => {
+      isLoading = false;
+      // btn.classList.remove("loading");
+      setIcon(false);
+    }, 2000);
+    // });
+  }
+</script>

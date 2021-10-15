@@ -1,41 +1,30 @@
 //v1
-function all_V1(promises) {
-  // your code here
-  let result = [];
-  let cnt = 0;
-
+function all_v1(promises) {
   if (!promises.length) return Promise.resolve(promises);
 
-  return new Promise((resolve, reject) => {
-    function onResolve(val) {
-      result.push(val);
-      cnt++;
-      if (cnt == promises.length) {
-        console.log("done");
-        resolve(result);
-      }
-    }
-
-    for (let i = 0; i < promises.length; i++) {
-      let p = promises[i];
-      if (!p || typeof p.then !== "function") {
-        onResolve(p);
-      } else {
-        p.then((val) => {
-          onResolve(val);
-        }).catch((e) => reject(e));
-      }
-    }
+  let result = [];
+  let cnt = 0;
+  return new Promise((res, rej) => {
+    promises.forEach((p) => {
+      Promise.resolve(p)
+        .then((v) => {
+          result.push(v);
+          cnt++;
+          if (cnt === promises.length) res(result);
+        })
+        .catch((e) => rej(e));
+    });
   });
 }
 
 //v2
 function all_v2(promises) {
-  return promises.reduce((accm, curr) => {
-    return accm.then((results) =>
-      Promise.resolve(curr).then((r) => [...results, r])
+  return promises.reduce((acc, cur) => {
+    return acc.then((results) =>
+      Promise.resolve(cur).then((r) => [...results, r])
     );
   }, Promise.resolve([]));
 }
 
-console.log(all([1, 2, 3, Promise.resolve(4)]));
+all_v1([1, 2, 3, Promise.resolve(4)]).then((v) => console.log(v));
+all_v2([1, 2, 3, Promise.resolve(4)]).then((v) => console.log(v));

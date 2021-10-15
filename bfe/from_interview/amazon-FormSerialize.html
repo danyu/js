@@ -1,0 +1,28 @@
+<form>
+  <input type="text" name="a.b" value="tom" />
+  <input type="text" name="a.c" value="jerry" />
+  <input type="text" name="a.c.d.e" value="kate" />
+  <input type="text" name="a.c.e" value="mary" />
+</form>
+
+<script>
+  console.log(serialize());
+  function serialize() {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    return Array.from(inputs).reduce((acc, input) => {
+      const props = input.name.split(".");
+
+      let cur = acc;
+      props.forEach((prop, i) => {
+        if (i === props.length - 1) {
+          cur[prop] = input.value;
+        } else {
+          if (!cur[prop] || typeof cur[prop] !== "object") cur[prop] = {};
+          cur = cur[prop];
+        }
+      });
+
+      return acc;
+    }, {});
+  }
+</script>

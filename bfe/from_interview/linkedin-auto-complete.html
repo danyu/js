@@ -1,0 +1,43 @@
+<style></style>
+<body>
+  <auto-complete />
+</body>
+<script>
+  const mockSuggestions = ["aa", "bb", "cc"];
+  class AutoComplete extends HTMLElement {
+    constructor() {
+      super();
+      this.innerHTML = `<div id='container'>
+            <input type='text' placeHolder='type here' />
+            <div id='suggestion-container'></div>
+        </div>`;
+      this.$("input").addEventListener("keyup", this.change);
+      this.$("input").addEventListener("blur", this.clearSuggestions);
+    }
+    suggestionUrl = "";
+    $ = (s) => this.querySelector(s);
+
+    change = () => {
+      console.log("typing");
+      this.fetchSuggestions();
+    };
+
+    renderSuggestions = (suggestions) => {
+      const container = this.$("#suggestion-container");
+      container.innerHTML = null;
+      suggestions.forEach((s) => {
+        const div = document.createElement("div");
+        div.innerText = s;
+        container.appendChild(div);
+      });
+    };
+
+    clearSuggestions = () => (this.$("#suggestion-container").innerHTML = null);
+
+    fetchSuggestions = () => {
+      setTimeout(this.renderSuggestions, 2000, mockSuggestions);
+    };
+  }
+
+  window.customElements.define("auto-complete", AutoComplete);
+</script>

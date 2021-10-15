@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    .cell {
+      width: 40px;
+      height: 40px;
+      border: solid thin black;
+    }
+    .row {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  Winner:
+  <span id="winner"></span>
+  <div id="board">
+    <div class="row">
+      <div class="cell" id="0"></div>
+      <div class="cell" id="1"></div>
+      <div class="cell" id="2"></div>
+    </div>
+    <div class="row">
+      <div class="cell" id="3"></div>
+      <div class="cell" id="4"></div>
+      <div class="cell" id="5"></div>
+    </div>
+    <div class="row">
+      <div class="cell" id="6"></div>
+      <div class="cell" id="7"></div>
+      <div class="cell" id="8"></div>
+    </div>
+  </div>
+  <input type="button" onclick="reset();" value="reset" />
+  <script>
+    var state = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // state of each cell
+    var playerX = true; // x | o
+    var canPlay = true;
+
+    /**
+     * [
+     *  0, 1, 2,
+     *  3, 4, 5,
+     *  6, 7, 8
+     * ]
+     */
+    var winningPattern = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    var cells = document.querySelectorAll(".cell");
+    var winnerBoard = document.querySelector("#winner");
+
+    init();
+
+    function init() {
+      cells.forEach((e) => e.addEventListener("click", onMove));
+    }
+
+    function reset() {
+      canPlay = true;
+      winnerBoard.innerText = "";
+      cells.forEach((e) => (e.innerText = ""));
+    }
+
+    function onMove(e) {
+      if (!canPlay) return;
+      let cellId = parseInt(e.target.id);
+      if (state[cellId] !== cellId) {
+        // cell used
+        return;
+      }
+
+      // update cell
+      state[cellId] = playerX ? "x" : "o";
+      e.target.innerText = state[cellId];
+
+      // check game state
+      winner = judge();
+      if (winner) {
+        document.querySelector("#winner").innerText = winner;
+        canPlay = false;
+      } else {
+        playerX = !playerX;
+      }
+    }
+
+    function judge() {
+      if (
+        winningPattern.some(
+          ([i1, i2, i3]) =>
+            state[i1] && state[i1] === state[i2] && state[i1] === state[i3]
+        )
+      ) {
+        return playerX ? "x" : "o";
+      }
+    }
+  </script>
+</body>

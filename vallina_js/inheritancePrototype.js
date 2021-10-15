@@ -54,3 +54,21 @@ for (let key in rect) {
   log("key = ", key, rect.hasOwnProperty(key));
 }
 log(rect.printName());
+
+
+
+
+function Foo(){
+
+}
+Foo.prototype.hi= function(){
+    console.log('hi');
+}
+const f = new Foo();
+f.hi();
+console.log(f);
+
+const b = new Object();
+b.[[Prototype]] = Foo.prototype;
+Foo.call(b);
+b.hi();

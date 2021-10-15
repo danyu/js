@@ -1,0 +1,77 @@
+<style></style>
+<!-- <div class="container">
+  <input id="key" type="text" />
+  <label for="key"> Tag key: </label>
+  <input id="value" type="text" />
+  <label for="value"> Tag value: </label>
+  <input id="btn" type="button" value="add tag" />
+  <ul class="list"></ul>
+</div> -->
+<tag-editor max-tag="4"> </tag-editor>
+<tag-editor max-tag="2"> </tag-editor>
+<script>
+  class TagEditor extends HTMLElement {
+    cnt = 0;
+    // static id = 0;
+    // static name = `TagEditor`;
+    // prefix = TagEditor.name + TagEditor.id + "-";
+    constructor() {
+      super();
+      // this.prefix = TagEditor.name + TagEditor.id + "-";
+      // this.containerId = `${this.prefix}-container`;
+      this.innerHTML = `<div class="container">
+            <input id="key" type="text" />
+            <label for="key"> Tag key: </label>
+            <input id="value" type="text" />
+            <label for="value"> Tag value: </label>
+            <input id="btn" type="button" value="add tag" />
+            <ul class="list"></ul>
+        </div>`;
+
+      this.maxTags = this.getAttribute("max-tag");
+
+      this.$("#btn").addEventListener("click", this.onAddTag);
+    }
+
+    $ = (s) => this.querySelector(s);
+
+    onAddTag = () => {
+      const key = this.$(`#key`).value;
+      const value = this.$(`#value`).value;
+
+      if (!key || !value) return;
+
+      // update key
+      let li = this.$("li[key='" + key + "']");
+      if (li) {
+        this.updateTag(li, key, value);
+      } else {
+        // can NOT add if already reaches capcity
+        if (this.cnt == this.maxTags) return;
+        // append tag to list
+        this.appendTag(key, value);
+      }
+    };
+
+    updateTag = (li, key, value) => {
+      const text = key + ", " + value;
+      li.innerText = text;
+    };
+
+    appendTag = (key, value) => {
+      const text = key + ", " + value;
+
+      let ul = this.$("ul");
+      let li = document.createElement("li");
+      li.setAttribute("key", key);
+      li.innerText = text;
+
+      ul.appendChild(li);
+      this.cnt++;
+    };
+
+    get tags() {}
+  }
+
+  window.customElements.define("tag-editor", TagEditor);
+</script>
