@@ -12,9 +12,12 @@
             <div id='suggestion-container'></div>
         </div>`;
       this.$("input").addEventListener("keyup", this.change);
+      this.$("input").addEventListener("focus", this.change);
       this.$("input").addEventListener("blur", this.clearSuggestions);
     }
+
     suggestionUrl = "";
+
     $ = (s) => this.querySelector(s);
 
     change = () => {
@@ -35,7 +38,7 @@
     clearSuggestions = () => (this.$("#suggestion-container").innerHTML = null);
 
     fetchSuggestions = () => {
-      setTimeout(this.renderSuggestions, 2000, mockSuggestions);
+      setTimeout(this.renderSuggestions, 100, mockSuggestions);
     };
   }
 

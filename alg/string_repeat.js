@@ -11,6 +11,7 @@ function stringRepeat(str, rep) {
       break;
     }
   }
+
   return res;
 }
 
